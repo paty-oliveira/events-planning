@@ -1,8 +1,5 @@
 import React from "react";
-
-type FilteredEventPageProps = {
-  params: string[];
-};
+import { FilteredEventPageProps } from "./types";
 
 const FilteredEventPage: React.FunctionComponent<FilteredEventPageProps> = ({
   params,

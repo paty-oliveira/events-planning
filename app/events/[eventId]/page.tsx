@@ -1,18 +1,15 @@
 import React from "react";
+import { EventPageProps } from "./types";
 
-type Event = {
-  eventId: string;
-};
-
-type EventPageProps = {
-  params: Event;
-}
-
-const DetailedEventPage: React.FunctionComponent<EventPageProps> = ({ params }) => {
-  return <>
-    <h1>Event Page</h1>
-    <h2>Event: {params.eventId}</h2>
-  </>;
+const DetailedEventPage: React.FunctionComponent<EventPageProps> = ({
+  params,
+}) => {
+  return (
+    <>
+      <h1>Event Page</h1>
+      <h2>Event: {params.eventId}</h2>
+    </>
+  );
 };
 
 export default DetailedEventPage;
