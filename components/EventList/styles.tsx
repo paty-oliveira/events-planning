@@ -5,5 +5,6 @@ export const ListContainer = styled.ul`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 1rem;
 `
