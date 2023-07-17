@@ -1,7 +1,8 @@
 import React from "react";
 import Image from "next/image";
-import { EventItemProps } from "./styles";
+import { EventItemProps } from "./types";
 import Link from "next/link";
+import { EventCard, EventLinkContainer } from "./styles";
 
 const EventItem: React.FunctionComponent<EventItemProps> = ({ event }) => {
   const { id, title, location, date, image, isFeatured } = event;
@@ -12,18 +13,16 @@ const EventItem: React.FunctionComponent<EventItemProps> = ({ event }) => {
     year: "numeric",
   });
 
-  const formattedLocation = location.replace(",", "\n");
-
   return (
-    <li>
-      <Image src={"/" + image} alt={title} width={"100"} height={"50"} />
+    <EventCard>
+      <Image src={"/" + image} alt={title} width={"150"} height={"100"} />
       <h2>{title}</h2>
       <h3>{readableDate}</h3>
-      <h4>{formattedLocation}</h4>
-      <div>
+      <h4>{location}</h4>
+      <EventLinkContainer>
         <Link href={`/events/${id}`}>Explore Event</Link>
-      </div>
-    </li>
+      </EventLinkContainer>
+    </EventCard>
   );
 };
 
