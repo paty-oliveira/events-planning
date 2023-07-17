@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import StyledComponentsRegistry from "./registry";
 import { GlobalStyle } from "@/theme/globalStyle";
+import { EventPlannerThemeProvider } from "@/theme";
 
 export const metadata: Metadata = {
   title: "Events Planner",
@@ -14,10 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <StyledComponentsRegistry>
-      <html lang="en">
-      <GlobalStyle />
-        <body>{children}</body>
-      </html>
+      <EventPlannerThemeProvider>
+        <html lang="en">
+          <GlobalStyle />
+          <body>{children}</body>
+        </html>
+      </EventPlannerThemeProvider>
     </StyledComponentsRegistry>
   );
 }
