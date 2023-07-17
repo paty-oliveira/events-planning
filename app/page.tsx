@@ -1,4 +1,11 @@
+import React from "react";
 
-export default function Home() {
-  return <></>
-}
+const Home: React.FunctionComponent = () => {
+  return (
+    <>
+      <h1>Starting Page</h1>
+    </>
+  );
+};
+
+export default Home;
