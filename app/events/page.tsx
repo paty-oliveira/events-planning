@@ -1,9 +1,13 @@
 import React from "react";
+import { getAllEvents } from "@/mocks/dummy-data";
+import EventList from "@/components/EventList";
 
 const EventsPage: React.FunctionComponent = () => {
+  const events = getAllEvents();
+
   return (
     <>
-      <h1>Event Page</h1>
+      <EventList items={events} />
     </>
   );
 };
