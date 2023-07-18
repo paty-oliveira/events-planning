@@ -3,16 +3,15 @@
 import React from "react";
 import EventList from "@/components/EventList";
 import { getFeaturedEvents } from "@/mocks/dummy-data";
-import { StyledContainer } from "./styles";
+import StyledContainer from "@/components/StyledContainer";
 import NavBar from "@/components/NavBar";
-
 
 const Home: React.FunctionComponent = () => {
   const featuredEvents = getFeaturedEvents();
 
   return (
     <StyledContainer>
-      <NavBar/>
+      <NavBar />
       <EventList items={featuredEvents} />
     </StyledContainer>
   );
