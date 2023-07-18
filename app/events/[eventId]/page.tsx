@@ -5,6 +5,7 @@ import { EventPageProps } from "./types";
 import { getEventById } from "@/mocks/dummy-data";
 import EventSummary from "@/components/EventSummary";
 import EventLogistics from "@/components/EventLogistics";
+import EventContent from "@/components/EventContent";
 
 const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
   params,
@@ -25,6 +26,9 @@ const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
         image={event.image}
         imageAlt={event.title}
       />
+      <EventContent>
+        <p>{event.description}</p>
+      </EventContent>
     </>
   );
 };
