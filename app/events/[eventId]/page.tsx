@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React, { Fragment } from "react";
+import React from "react";
 import { EventPageProps } from "./types";
 import { getEventById } from "@/mocks/dummy-data";
-import StyledContainer from "@/components/StyledContainer";
+import EventSummary from "@/components/EventSummary";
 
 const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
   params,
@@ -12,15 +12,13 @@ const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
   const event = getEventById(eventId);
 
   if (!event) {
-    return <p>No event found!</p>
+    return <p>No event found!</p>;
   }
 
   return (
-    <StyledContainer>
-      <h1>Event Page</h1>
-      <h2>Title: {event.title}</h2>
-      <p>Description: {event.description}</p>
-    </StyledContainer>
+    <>
+      <EventSummary title={event.title} />
+    </>
   );
 };
 

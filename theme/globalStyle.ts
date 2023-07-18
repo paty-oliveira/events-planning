@@ -11,4 +11,4 @@ export const GlobalStyle = createGlobalStyle`
         margin: 2rem;
         background-color: ${(props) => props.theme.colors["blue"]["000"]};
     }
-`
+`;
