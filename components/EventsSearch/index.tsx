@@ -1,11 +1,6 @@
 "use client";
 
-import React, {
-  DetailedHTMLProps,
-  FormEvent,
-  SelectHTMLAttributes,
-  useRef,
-} from "react";
+import React, { useState } from "react";
 import { FormContainer, Controls, Control } from "./styles";
 import Link from "next/link";
 import { Button } from "../EventItem/styles";
@@ -27,11 +22,11 @@ const months = [
 ];
 
 const EventsSearch: React.FunctionComponent = () => {
-  const yearInputRef = useRef("");
-  const monthInputRef = useRef("");
+  const [selectedYear, setSelectedYear] = useState(years[0]);
+  const [selectedMonth, setSelectedMonth] = useState(months[0]);
 
-  const selectedYear = yearInputRef.current.value;
-  const selectedMonth = monthInputRef.current.value;
+  const monthIndex = months.indexOf(selectedMonth) + 1;
+  const link = `events/${selectedYear}/${monthIndex}`;
 
   return (
     <>
@@ -39,7 +34,11 @@ const EventsSearch: React.FunctionComponent = () => {
         <Controls>
           <Control>
             <label htmlFor="year">Year</label>
-            <select id="year" ref={yearInputRef}>
+            <select
+              id="year"
+              value={selectedYear}
+              onChange={(e) => setSelectedYear(e.target.value)}
+            >
               {years.map((year, index) => (
                 <option key={index} value={year}>
                   {year}
@@ -49,9 +48,13 @@ const EventsSearch: React.FunctionComponent = () => {
           </Control>
           <Control>
             <label htmlFor="month">Month</label>
-            <select id="month" ref={monthInputRef}>
+            <select
+              id="month"
+              value={selectedMonth}
+              onChange={(e) => setSelectedMonth(e.target.value)}
+            >
               {months.map((month, index) => (
-                <option key={index} value={index}>
+                <option key={index} value={month}>
                   {month}
                 </option>
               ))}
@@ -60,7 +63,7 @@ const EventsSearch: React.FunctionComponent = () => {
         </Controls>
       </FormContainer>
       <Button>
-        <Link href={`events/${selectedYear}/${selectedMonth}`}>Search</Link>
+        <Link href={link}>Search</Link>
       </Button>
     </>
   );
