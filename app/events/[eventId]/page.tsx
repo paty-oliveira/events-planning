@@ -2,7 +2,7 @@
 
 import React from "react";
 import { EventPageProps } from "./types";
-import { getEventById } from "@/mocks/dummy-data";
+import { getEventById } from "@/mocks/utils";
 import EventSummary from "@/components/EventSummary";
 import EventLogistics from "@/components/EventLogistics";
 import EventContent from "@/components/EventContent";

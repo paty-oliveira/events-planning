@@ -2,7 +2,7 @@
 
 import React from "react";
 import EventList from "@/components/EventList";
-import { getFeaturedEvents } from "@/mocks/dummy-data";
+import { getFeaturedEvents } from "@/mocks/utils";
 import StyledContainer from "@/components/StyledContainer";
 import NavBar from "@/components/NavBar";
 

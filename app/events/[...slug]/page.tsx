@@ -3,7 +3,7 @@
 import React from "react";
 import { FilteredEventPageProps } from "./types";
 import { usePathname } from "next/navigation";
-import { getFilteredEvents } from "@/mocks/dummy-data";
+import { getFilteredEvents } from "@/mocks/utils";
 import EventList from "@/components/EventList";
 import ResultsTitle from "@/components/ResultsTitle";
 import Link from "next/link";
