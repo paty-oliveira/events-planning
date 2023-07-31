@@ -6,6 +6,7 @@ import { getEventById } from "@/mocks/utils";
 import EventSummary from "@/components/EventSummary";
 import EventLogistics from "@/components/EventLogistics";
 import EventContent from "@/components/EventContent";
+import Comments from "@/components/Comments";
 
 const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
   params,
@@ -29,6 +30,7 @@ const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={eventId}/>
     </>
   );
 };
