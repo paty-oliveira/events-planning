@@ -12,7 +12,7 @@ const Comments: React.FunctionComponent<CommentsProps> = ({ eventId }) => {
   };
 
   const addCommentHandler = async (comment: Comment) => {
-    const response = await fetch("/api/comments", {
+    const response = await fetch("/api/comments/" + eventId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ const Comments: React.FunctionComponent<CommentsProps> = ({ eventId }) => {
         {showComments ? "Hide" : "Show"} Comments
       </Button>
       {showComments && <NewComment onAddComment={addCommentHandler} />}
-      {showComments && <CommentList />}
+      {showComments && <CommentList eventId={eventId} />}
     </CommentsSection>
   );
 };

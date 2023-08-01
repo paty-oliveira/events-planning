@@ -1,24 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { CommentsContainer, Comment } from "./styles";
 import { CommentsPayload } from "@/app/api/types";
+import { CommentListProps } from "./types";
 
-const CommentList: React.FunctionComponent = () => {
-  const [comments, setComments] = useState<CommentsPayload[]>([
-    {
-      id: Math.random().toString(),
-      content: "My comment is amazing!",
-      author: "Maximilian",
-    },
-    {
-      id: Math.random().toString(),
-      content: "Another comment ",
-      author: "Patricia",
-    },
-  ]);
+const CommentList: React.FunctionComponent<CommentListProps> = ({
+  eventId,
+}) => {
+  const [comments, setComments] = useState<CommentsPayload[]>([]);
 
   useEffect(() => {
     async () => {
-      const response = await fetch("/api/comments", {
+      const response = await fetch("/api/comments/" + eventId, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -27,7 +19,7 @@ const CommentList: React.FunctionComponent = () => {
       const { comments } = await response.json();
       setComments(comments);
     };
-  }, []);
+  }, [eventId]);
 
   return (
     <CommentsContainer>
