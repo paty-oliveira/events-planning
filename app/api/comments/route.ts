@@ -4,10 +4,12 @@ import { CommentsPayload, GetCommentsResponse } from "../types";
 export async function GET() {
   const comments: CommentsPayload[] = [
     {
+      id: Math.random().toString(),
       content: "My comment is amazing!",
       author: "Maximilian",
     },
     {
+      id: Math.random().toString(),
       content: "Another comment ",
       author: "Patricia",
     },

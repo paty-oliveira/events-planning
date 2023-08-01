@@ -5,10 +5,12 @@ import { CommentsPayload } from "@/app/api/types";
 const CommentList: React.FunctionComponent = () => {
   const [comments, setComments] = useState<CommentsPayload[]>([
     {
+      id: Math.random().toString(),
       content: "My comment is amazing!",
       author: "Maximilian",
     },
     {
+      id: Math.random().toString(),
       content: "Another comment ",
       author: "Patricia",
     },
@@ -29,8 +31,8 @@ const CommentList: React.FunctionComponent = () => {
 
   return (
     <CommentsContainer>
-      {comments.map((comment, index) => (
-        <Comment key={index}>
+      {comments.map((comment) => (
+        <Comment key={comment.id}>
           <p>{comment.content}</p>
           <div>
             By <address>{comment.author}</address>
