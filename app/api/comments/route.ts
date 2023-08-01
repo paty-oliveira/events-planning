@@ -31,11 +31,11 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
-    const { comment } = await request.json();
+    const body = await request.json();
     return NextResponse.json({
       status: 201,
       message: "Success",
-      comment: comment,
+      comment: body,
     });
   } catch (e) {
     return NextResponse.json({ error: e }, { status: 500 });
