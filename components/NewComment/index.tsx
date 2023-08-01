@@ -10,10 +10,7 @@ import {
   InputContainer,
   Button,
 } from "./styles";
-
-type NewCommentProps = {
-  onAddComment: Function;
-};
+import { NewCommentProps } from "./types";
 
 const NewComment: React.FunctionComponent<NewCommentProps> = (props) => {
   const { onAddComment } = props;

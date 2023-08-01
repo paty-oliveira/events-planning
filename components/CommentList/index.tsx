@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { CommentsContainer, Comment } from "./styles";
-import { CommentsPayload } from "@/app/api/comments/route";
+import { CommentsPayload } from "@/app/api/types";
 
 const CommentList: React.FunctionComponent = () => {
   const [comments, setComments] = useState<CommentsPayload[]>([

@@ -1,15 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-
-export type CommentsPayload = {
-  content: string;
-  author: string;
-};
-
-type GetCommentsResponse = {
-  status: number;
-  message: "Success" | "Failure";
-  comments: CommentsPayload[];
-};
+import { CommentsPayload, GetCommentsResponse } from "../types";
 
 export async function GET() {
   const comments: CommentsPayload[] = [
