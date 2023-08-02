@@ -3,8 +3,8 @@ import {
   GetCommentsRequestParams,
   GetCommentsResponse,
   PostCommentResponse,
-  ResponseError,
-} from "./types";
+} from "../../types";
+import { ResponseError } from "../../types";
 import { comments } from "@/db/comments";
 
 export async function GET(

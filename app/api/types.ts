@@ -16,6 +16,12 @@ export type PostCommentResponse = {
   comment: CommentsPayload;
 };
 
+export type PostNewsletterResponse = {
+  status: number;
+  message: "Success";
+  email: string;
+};
+
 export type ResponseError = {
   status: number;
   message: "Failure";
