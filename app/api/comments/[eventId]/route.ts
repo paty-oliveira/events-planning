@@ -1,37 +1,49 @@
 import { NextRequest, NextResponse } from "next/server";
-import { GetCommentsRequest, GetCommentsResponse } from "./types";
+import {
+  GetCommentsRequestParams,
+  GetCommentsResponse,
+  PostCommentResponse,
+  ResponseError,
+} from "./types";
 import { comments } from "@/db/comments";
 
 export async function GET(
   request: NextRequest,
-  { params }: GetCommentsRequest
+  { params }: GetCommentsRequestParams
 ) {
   const eventId = params.eventId;
+  try {
+    const filteredComments = comments.filter(
+      (comment) => comment.eventId === eventId
+    );
 
-  const filteredComments = comments.filter(
-    (comment) => comment.eventId === eventId
-  );
-
-  return NextResponse.json<GetCommentsResponse>({
-    status: 200,
-    message: "Success",
-    comments: filteredComments,
-  });
+    return NextResponse.json<GetCommentsResponse>({
+      status: 200,
+      message: "Success",
+      comments: filteredComments,
+    });
+  } catch (e: any) {
+    return NextResponse.json<ResponseError>({
+      status: 500,
+      message: "Failure",
+      error: e,
+    });
+  }
 }
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    return NextResponse.json<GetCommentsResponse>({
+    return NextResponse.json<PostCommentResponse>({
       status: 201,
       message: "Success",
-      comments: body,
+      comment: body,
     });
-  } catch (e) {
-    return NextResponse.json<GetCommentsResponse>({
+  } catch (e: any) {
+    return NextResponse.json<ResponseError>({
       status: 500,
       message: "Failure",
-      comments: [],
+      error: e,
     });
   }
 }
