@@ -1,6 +1,6 @@
 import { CommentsPayload } from "@/db/types";
 
-export type GetCommentsRequestParams = {
+export type RequestParams = {
   params: { eventId: string };
 };
 
