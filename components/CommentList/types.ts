@@ -1,3 +1,5 @@
+import { CommentsPayload } from "@/db/types";
+
 export type CommentListProps = {
-  eventId: string;
+  comments: CommentsPayload[];
 };

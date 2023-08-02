@@ -11,9 +11,23 @@ import {
   Button,
 } from "./styles";
 import { NewCommentProps } from "./types";
+import { Comment } from "../Comments/types";
 
-const NewComment: React.FunctionComponent<NewCommentProps> = (props) => {
-  const { onAddComment } = props;
+const postNewComment = async (comment: Comment, eventId: string) => {
+  try {
+    await fetch("/api/comments/" + eventId, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(comment),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const NewComment: React.FunctionComponent<NewCommentProps> = ({ eventId }) => {
   const [isInvalid, setIsInvalid] = useState(false);
   const [email, setEmail] = useState<string>("");
   const [name, setName] = useState<string>("");
@@ -37,11 +51,14 @@ const NewComment: React.FunctionComponent<NewCommentProps> = (props) => {
       return;
     }
 
-    onAddComment({
-      email: email,
-      name: name,
-      text: comment,
-    });
+    postNewComment(
+      {
+        email: email,
+        name: name,
+        text: comment,
+      },
+      eventId
+    );
   };
 
   return (

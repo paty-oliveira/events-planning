@@ -1,8 +1,7 @@
-export type CommentsPayload = {
-  eventId: string;
-  id: string;
-  content: string;
-  author: string;
+import { CommentsPayload } from "@/db/types";
+
+export type GetCommentsRequest = {
+  params: { eventId: string };
 };
 
 export type GetCommentsResponse = {

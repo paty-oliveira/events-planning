@@ -1,3 +1,3 @@
 export type NewCommentProps = {
-  onAddComment: Function;
+  eventId: string;
 };

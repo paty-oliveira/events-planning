@@ -1,46 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
-import { CommentsPayload, GetCommentsResponse } from "../../types";
+import { GetCommentsRequest, GetCommentsResponse } from "./types";
+import { comments } from "@/db/comments";
 
-const comments: CommentsPayload[] = [
-  {
-    eventId: "e1",
-    id: Math.random().toString(),
-    content: "My comment is amazing!",
-    author: "Maximilian",
-  },
-  {
-    eventId: "e1",
-    id: Math.random().toString(),
-    content: "Another comment ",
-    author: "Patricia",
-  },
-  {
-    eventId: "e2",
-    id: Math.random().toString(),
-    content: "My comment is amazing!",
-    author: "Maximilian",
-  },
-  {
-    eventId: "e2",
-    id: Math.random().toString(),
-    content: "Another comment ",
-    author: "Patricia",
-  },
-  {
-    eventId: "e3",
-    id: Math.random().toString(),
-    content: "My comment is amazing!",
-    author: "Maximilian",
-  },
-  {
-    eventId: "e3",
-    id: Math.random().toString(),
-    content: "Another comment ",
-    author: "Patricia",
-  },
-];
-
-export async function GET(request: NextRequest, { params }: any) {
+export async function GET(
+  request: NextRequest,
+  { params }: GetCommentsRequest
+) {
   const eventId = params.eventId;
 
   const filteredComments = comments.filter(
@@ -57,12 +22,16 @@ export async function GET(request: NextRequest, { params }: any) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    return NextResponse.json({
+    return NextResponse.json<GetCommentsResponse>({
       status: 201,
       message: "Success",
-      comment: body,
+      comments: body,
     });
   } catch (e) {
-    return NextResponse.json({ error: e }, { status: 500 });
+    return NextResponse.json<GetCommentsResponse>({
+      status: 500,
+      message: "Failure",
+      comments: [],
+    });
   }
 }

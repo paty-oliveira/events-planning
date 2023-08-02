@@ -30,7 +30,7 @@ const EventDetailPage: React.FunctionComponent<EventPageProps> = ({
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
-      <Comments eventId={eventId}/>
+      <Comments eventId={eventId} />
     </>
   );
 };
