@@ -41,7 +41,7 @@ export async function POST(request: NextRequest, { params }: RequestParams) {
       content: text,
       author: name,
     };
-    // new to add new comment on fake db
+    comments.push(newComment);
     return NextResponse.json<PostCommentResponse>({
       status: 201,
       message: "Success",

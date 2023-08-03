@@ -15,8 +15,10 @@ const Comments: React.FunctionComponent<CommentsProps> = ({ eventId }) => {
       const { comments } = await response.json();
       setComments(comments);
     }
-    getCommentsFromEvent(eventId);
-  }, [eventId]);
+    if (showComments) {
+      getCommentsFromEvent(eventId);
+    }
+  }, [showComments, eventId]);
 
   const handleOnClick = () => {
     setShowComments((prevStatus) => !prevStatus);
