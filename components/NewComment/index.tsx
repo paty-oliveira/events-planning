@@ -59,6 +59,10 @@ const NewComment: React.FunctionComponent<NewCommentProps> = ({ eventId }) => {
       },
       eventId
     );
+
+    setEmail("");
+    setName("");
+    setComment("");
   };
 
   return (
